@@ -42,9 +42,8 @@ tracks/0/keys = {
 "values": [ Rect2( 240.814, 13.892, 112, 104 ) ]
 }
 
-[node name="Area2D" type="Area2D"]
+[node name="acaraje" type="Area2D"]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.848879, 0, 0, 0.798012, 934.418, 373.665 )

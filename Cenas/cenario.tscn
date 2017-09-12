@@ -25,7 +25,7 @@ editor/display_folded = true
 transform/pos = Vector2( 420, 310 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( 1856, 83, 111, 114 )
+region_rect = Rect2( -66.726, 854.893, 592, 512 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa"]
 
@@ -127,12 +127,29 @@ bounce = 0.0
 [node name="mapa4" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 776, 309 )
+transform/pos = Vector2( 907.561, 383.919 )
 texture = ExtResource( 1 )
 region = true
 region_rect = Rect2( 552, 860, 939, 665 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa4"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="mapa5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1689.73, 303.838 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 552, 860, 939, 665 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="mapa5"]
 
 input/pickable = false
 collision/layers = 1

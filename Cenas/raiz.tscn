@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scripts/oya.gd" type="Script" id=1]
 [ext_resource path="res://sprites/movebody.png" type="Texture" id=2]
 [ext_resource path="res://sprites/tileset3.tres" type="TileSet" id=3]
 [ext_resource path="res://sprites/Fase 1.png" type="Texture" id=4]
 [ext_resource path="res://Cenas/coletavel01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/font_score.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -69,6 +70,25 @@ tracks/0/keys = {
 "values": [ Rect2( 60, 61.14, 236, 348 ), Rect2( 328, 61.14, 232, 348 ), Rect2( 628, 61.14, 196, 348 ) ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 26
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 6 )
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "# Script lbl_score
+extends Label
+
+
+func _ready():
+	game.connect(\"score_changed\", self , \"_on_score_changed\")
+	pass
+func _on_score_changed():
+	set_text(str(game.score))"
+
 [node name="game" type="Node"]
 
 [node name="Oya" type="KinematicBody2D" parent="."]
@@ -76,7 +96,7 @@ tracks/0/keys = {
 editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( -1.65385, 1.44584e-07, -1.65478e-07, -1.89285, 238.5, 467.868 )
+shapes/0/transform = Matrix32( -1.65385, 1.44584e-07, -1.65478e-07, -1.89285, -133.5, 428.868 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 3
@@ -85,7 +105,7 @@ script/script = ExtResource( 1 )
 
 [node name="spriteOya" type="Sprite" parent="Oya"]
 
-transform/pos = Vector2( 242, 445.761 )
+transform/pos = Vector2( -130, 406.761 )
 transform/scale = Vector2( 0.269622, 0.265006 )
 texture = ExtResource( 2 )
 vframes = 6
@@ -96,7 +116,7 @@ region_rect = Rect2( 28, 423.78, 252, 368 )
 
 [node name="shapeOya" type="CollisionShape2D" parent="Oya"]
 
-transform/pos = Vector2( 238.5, 467.868 )
+transform/pos = Vector2( -133.5, 428.868 )
 transform/rot = 180.0
 transform/scale = Vector2( 1.65385, 1.89285 )
 shape = SubResource( 1 )
@@ -119,7 +139,7 @@ autoplay = "andar"
 
 [node name="RayChao" type="RayCast2D" parent="Oya"]
 
-transform/pos = Vector2( 227.467, 485.261 )
+transform/pos = Vector2( -144.533, 446.261 )
 transform/scale = Vector2( 1.98333, 1.85938 )
 enabled = true
 cast_to = Vector2( 0, 1.5 )
@@ -128,7 +148,7 @@ type_mask = 15
 
 [node name="RayChao2" type="RayCast2D" parent="Oya"]
 
-transform/pos = Vector2( 235.467, 485.261 )
+transform/pos = Vector2( -136.533, 446.261 )
 transform/scale = Vector2( 1.98333, 1.85938 )
 enabled = true
 cast_to = Vector2( 0, 1.5 )
@@ -137,7 +157,7 @@ type_mask = 15
 
 [node name="RayChao1" type="RayCast2D" parent="Oya"]
 
-transform/pos = Vector2( 242.467, 485.261 )
+transform/pos = Vector2( -129.533, 446.261 )
 transform/scale = Vector2( 1.98333, 1.85938 )
 enabled = true
 cast_to = Vector2( 0, 1.5 )
@@ -146,7 +166,7 @@ type_mask = 15
 
 [node name="RayChao3" type="RayCast2D" parent="Oya"]
 
-transform/pos = Vector2( 249.467, 485.261 )
+transform/pos = Vector2( -122.533, 446.261 )
 transform/scale = Vector2( 1.98333, 1.85938 )
 enabled = true
 cast_to = Vector2( 0, 1.5 )
@@ -155,7 +175,7 @@ type_mask = 15
 
 [node name="Camera2D" type="Camera2D" parent="Oya"]
 
-transform/pos = Vector2( 511.911, 333.945 )
+transform/pos = Vector2( 139.911, 294.945 )
 transform/rot = 180.0
 transform/scale = Vector2( 2.78404, 1.78297 )
 anchor_mode = 1
@@ -168,7 +188,7 @@ limit/right = 10000000
 limit/bottom = 10000000
 drag_margin/h_enabled = true
 drag_margin/v_enabled = true
-smoothing/enable = true
+smoothing/enable = false
 smoothing/speed = 5.0
 drag_margin/left = 0.2
 drag_margin/top = 0.2
@@ -177,6 +197,7 @@ drag_margin/bottom = 0.2
 
 [node name="TileMap" type="TileMap" parent="."]
 
+transform/pos = Vector2( -506.314, -6.75114 )
 mode = 0
 tile_set = ExtResource( 3 )
 cell/size = Vector2( 100, 100 )
@@ -191,10 +212,11 @@ collision/bounce = 0.0
 collision/layers = 3
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -1, 3, -65527, 4, 262149, 0, 262150, 0, 262167, 0, 262168, 0, 393215, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 0, 327692, 0, 327693, 0, 327694, 0, 327695, 0, 327696, 0, 327697, 0, 327698, 0, 327699, 0, 327700, 0, 327701, 0, 327702, 0, 327705, 0, 393242, 0, 458779, 0 )
+tile_data = IntArray( -1, 3, 262149, 0, 262150, 0, 262167, 0, 262168, 0, 393215, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 0, 327692, 0, 327693, 0, 327694, 0, 327695, 0, 327696, 0, 327697, 0, 327698, 0, 327699, 0, 327700, 0, 327701, 0, 327702, 0, 327705, 0, 393242, 0, 458779, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -208,9 +230,13 @@ scroll/ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
+transform/pos = Vector2( -557, -0.902496 )
 motion/scale = Vector2( 1, 0 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 2065, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="bg01" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 
@@ -232,6 +258,8 @@ region_rect = Rect2( 532, 0, 490, 201.892 )
 
 [node name="coletaveis1" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="Area2D" parent="coletaveis1" instance=ExtResource( 5 )]
 
 [node name="Area2D1" parent="coletaveis1" instance=ExtResource( 5 )]
@@ -241,5 +269,31 @@ transform/pos = Vector2( 170, 0 )
 [node name="Area2D2" parent="coletaveis1" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 320, 0 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+layer = 7
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="lbl_score" type="Label" parent="HUD"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 133.0
+margin/top = 67.0
+margin/right = 305.0
+margin/bottom = 94.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = SubResource( 7 )
 
 

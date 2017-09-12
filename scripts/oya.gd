@@ -25,13 +25,15 @@ const SLIDE_STOP_MIN_TRAVEL = 1.0 # One pixel
 var velocity = Vector2()
 var on_air_time = 100
 var jumping = false
-
+var score_curent = 0
+var score_best = 0
 var prev_jump_pressed = false
 var animacao = ""
 var nova_anim = ""
 
 func _fixed_process(delta):
-	move(Vector2(150, 0) * delta)
+	move(Vector2(10, 0) * delta)
+	set_z(5)
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
@@ -149,12 +151,17 @@ func _fixed_process(delta):
 		get_node("anim").play(nova_anim)
 		animacao = nova_anim
 		
-
+func _input(event):
+	if event.type == InputEvent.SCREEN_DRAG and event.scancode ==  KEY_Y:
+		nova_anim = "pulando"
 	#print(nova_anim)
 	#print(chao)
 	#print(velocity.y)
 	
 	
+
 func _ready():
 	set_fixed_process(true)
+	set_process_input(true)
+
 	
