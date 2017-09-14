@@ -91,6 +91,8 @@ func _on_score_changed():
 
 [node name="game" type="Node"]
 
+editor/display_folded = true
+
 [node name="Oya" type="KinematicBody2D" parent="."]
 
 editor/display_folded = true
@@ -216,7 +218,6 @@ tile_data = IntArray( -1, 3, 262149, 0, 262150, 0, 262167, 0, 262168, 0, 393215,
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -230,7 +231,7 @@ scroll/ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-transform/pos = Vector2( -557, -0.902496 )
+transform/pos = Vector2( -573.819, -0.902496 )
 motion/scale = Vector2( 1, 0 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 2065, 0 )
