@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/coletavel01.gd" type="Script" id=1]
-[ext_resource path="res://sprites/Sprite.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Fase_1.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -11,7 +11,7 @@ radius = 53.7909
 [sub_resource type="Animation" id=2]
 
 resource/name = "collect"
-length = 1.0
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -19,10 +19,10 @@ tracks/0/path = NodePath(".:region_rect")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.3 ),
-"transitions": FloatArray( 1, 1 ),
+"times": FloatArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 472.814, 27.892, 112, 94 ), Rect2( 694.746, 238.1, 64, 62 ) ]
+"values": [ Rect2( 562.537, 789.91, 114, 123 ), Rect2( 680.092, 785.204, 106, 128.535 ), Rect2( 794.864, 785.204, 105.394, 128.535 ), Rect2( 900.258, 785.204, 120.742, 129.796 ), Rect2( 1013, 787, 119, 128 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ Rect2( 240.814, 13.892, 112, 104 ) ]
+"values": [ Rect2( 453.537, 787.91, 107, 126 ) ]
 }
 
 [node name="acaraje" type="Area2D"]
@@ -61,7 +61,7 @@ transform/pos = Vector2( 931.526, 370.469 )
 transform/scale = Vector2( 0.777249, 0.777249 )
 texture = ExtResource( 2 )
 region = true
-region_rect = Rect2( 240.814, 13.892, 112, 104 )
+region_rect = Rect2( 1013, 787, 119, 128 )
 
 [node name="anima" type="AnimationPlayer" parent="Sprite"]
 

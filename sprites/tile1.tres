@@ -1,0 +1,66 @@
+[gd_resource type="TileSet" load_steps=5 format=1]
+
+[ext_resource path="res://sprites/Fase_1.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 52.5489, 28.6153 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50.8195, 23.7241 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 51.5002, 23.7241 )
+
+[resource]
+
+0/name = "mapa"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 80, 104, 107 )
+0/occluder_offset = Vector2( 52, 53.5 )
+0/navigation_offset = Vector2( 52, 53.5 )
+0/shape_offset = Vector2( 52, 53.5 )
+0/shapes = [ SubResource( 1 ) ]
+0/one_way_collision_direction = Vector2( 0, 0 )
+0/one_way_collision_max_depth = 0.0
+1/name = "mapa1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 113, 80, 107, 108 )
+1/occluder_offset = Vector2( 53.6515, 54.196 )
+1/navigation_offset = Vector2( 53.6515, 54.196 )
+1/shape_offset = Vector2( 53.6515, 54.196 )
+1/shapes = [ SubResource( 2 ) ]
+1/one_way_collision_direction = Vector2( 0, 0 )
+1/one_way_collision_max_depth = 0.0
+2/name = "mapa2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 227, 82, 105, 104 )
+2/occluder_offset = Vector2( 52.5, 52.0805 )
+2/navigation_offset = Vector2( 52.5, 52.0805 )
+2/shape_offset = Vector2( 52.5, 52.0805 )
+2/shapes = [ SubResource( 3 ) ]
+2/one_way_collision_direction = Vector2( 0, 0 )
+2/one_way_collision_max_depth = 0.0
+3/name = "mapa3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 340, 83, 106, 103 )
+3/occluder_offset = Vector2( 53.3662, 51.7763 )
+3/navigation_offset = Vector2( 53.3662, 51.7763 )
+3/shape_offset = Vector2( 53.3662, 51.7763 )
+3/shapes = [ SubResource( 3 ) ]
+3/one_way_collision_direction = Vector2( 0, 0 )
+3/one_way_collision_max_depth = 0.0
+

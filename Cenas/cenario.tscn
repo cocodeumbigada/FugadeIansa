@@ -1,37 +1,36 @@
 [gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://sprites/Sprite.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Fase_1.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 52.5489, 50 )
+extents = Vector2( 52.5489, 28.6153 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 51.4595, 52 )
+extents = Vector2( 50.8195, 23.7241 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 50.585, 52 )
+extents = Vector2( 51.5002, 23.7241 )
 
 [node name="cenario" type="Node"]
 
 [node name="mapa" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 420, 310 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( -66.726, 854.893, 592, 512 )
+region_rect = Rect2( 0.302986, 80.804, 104, 107 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.991071, 0, 0, 1, 1, 6 )
+shapes/0/transform = Matrix32( 0.991071, 0, 0, 1.04545, 1, 23.4368 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -42,25 +41,24 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/StaticBody2D"]
 
-transform/pos = Vector2( 1, 6 )
-transform/scale = Vector2( 0.991071, 1 )
+transform/pos = Vector2( 1, 23.4368 )
+transform/scale = Vector2( 0.991071, 1.04545 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="mapa1" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 526, 310 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( 1744, 83, 111, 114 )
+region_rect = Rect2( 113.303, 80.042, 107.303, 108.392 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa1"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1.00968, 0, 0, 1, -0.0133772, 6 )
+shapes/0/transform = Matrix32( 1.00968, 0, 0, 1.31078, -1.01338, 23.7444 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -71,25 +69,24 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mapa1/StaticBody2D"]
 
-transform/pos = Vector2( -0.0133772, 6 )
-transform/scale = Vector2( 1.00968, 1 )
+transform/pos = Vector2( -1.01338, 23.7444 )
+transform/scale = Vector2( 1.00968, 1.31078 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
 [node name="mapa2" type="Sprite" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 646, 310 )
+transform/pos = Vector2( 636, 310 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( 1744, 83, 111, 114 )
+region_rect = Rect2( 227.303, 82.72, 105, 104.161 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa2"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1.01836, 0, 0, 1, -2.5134, 6 )
+shapes/0/transform = Matrix32( 1.00968, 0, 0, 1.31078, -0.0133657, 23.9497 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -100,23 +97,25 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mapa2/StaticBody2D"]
 
-transform/pos = Vector2( -2.5134, 6 )
-transform/scale = Vector2( 1.01836, 1 )
+transform/pos = Vector2( -0.0133657, 23.9497 )
+transform/scale = Vector2( 1.00968, 1.31078 )
 shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
 [node name="mapa3" type="Sprite" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 776, 310 )
+transform/pos = Vector2( 746, 310 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( -5, 860, 544, 665 )
+region_rect = Rect2( 340.704, 83.329, 106.732, 103.553 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mapa3"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1.00968, 0, 0, 1.31078, -0.0133657, 23.9497 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -124,39 +123,12 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="mapa4" type="Sprite" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa3/StaticBody2D"]
 
-editor/display_folded = true
-transform/pos = Vector2( 907.561, 383.919 )
-texture = ExtResource( 1 )
-region = true
-region_rect = Rect2( 552, 860, 939, 665 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="mapa4"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="mapa5" type="Sprite" parent="."]
-
-transform/pos = Vector2( 1689.73, 303.838 )
-texture = ExtResource( 1 )
-region = true
-region_rect = Rect2( 552, 860, 939, 665 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="mapa5"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+transform/pos = Vector2( -0.0133657, 23.9497 )
+transform/scale = Vector2( 1.00968, 1.31078 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
 
 
