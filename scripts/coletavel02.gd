@@ -26,6 +26,7 @@ func _on_Area2D_2_body_enter( body ):
 		if body.get_layer_mask() == 1:
 			game.score += mangaRosa
 			#score_current += 1
+			get_node("SamplePlayer2D").play("manga")
 			get_node("shape").queue_free()
 			get_node("Sprite/anima").play("collect")
 			yield(get_node("Sprite/anima"), "finished")

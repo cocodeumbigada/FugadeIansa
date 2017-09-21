@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://scripts/oya.gd" type="Script" id=1]
 [ext_resource path="res://sprites/movebody.png" type="Texture" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://Cenas/coletavel01.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/coletavel02.gd" type="Script" id=6]
 [ext_resource path="res://sprites/Fase_1.png" type="Texture" id=7]
-[ext_resource path="res://fonts/font_score.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://samples/mordidamanga_session.wav" type="Sample" id=8]
+[ext_resource path="res://fonts/font_score.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://scripts/.gd" type="Script" id=10]
+[ext_resource path="res://samples/trilha_session.wav" type="Sample" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -72,12 +75,12 @@ tracks/0/keys = {
 "values": [ Rect2( 60, 61.14, 236, 348 ), Rect2( 328, 61.14, 232, 348 ), Rect2( 628, 61.14, 196, 348 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
 radius = 33.9965
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 resource/name = "collect"
 length = 1.0
@@ -94,7 +97,7 @@ tracks/0/keys = {
 "values": [ Rect2( 565, 705, 112, 89 ), Rect2( 677, 705, 112, 89 ), Rect2( 789, 705, 112, 89 ), Rect2( 901, 705, 112, 89 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 resource/name = "spin"
 length = 1.0
@@ -111,14 +114,23 @@ tracks/0/keys = {
 "values": [ Rect2( 453, 705, 112, 85 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="SampleLibrary" id=9]
+
+samples/manga = {
+"db": 10.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+
+[sub_resource type="DynamicFont" id=10]
 
 font/size = 26
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 8 )
+font/font = ExtResource( 9 )
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=11]
 
 script/source = "# Script lbl_score
 extends Label
@@ -129,6 +141,15 @@ func _ready():
 	pass
 func _on_score_changed():
 	set_text(str(game.score))"
+
+[sub_resource type="SampleLibrary" id=12]
+
+samples/trilha = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
 
 [node name="game" type="Node"]
 
@@ -313,7 +334,7 @@ transform/pos = Vector2( 320, 0 )
 [node name="Area2D_2" type="Area2D" parent="coletaveis1"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 427, 467 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -326,7 +347,7 @@ script/script = ExtResource( 6 )
 [node name="shape" type="CollisionShape2D" parent="coletaveis1/Area2D_2"]
 
 transform/pos = Vector2( 427, 467 )
-shape = SubResource( 10 )
+shape = SubResource( 6 )
 trigger = true
 _update_shape_index = 0
 
@@ -342,12 +363,23 @@ region_rect = Rect2( 565, 705, 112, 89 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/collect = SubResource( 8 )
-anims/spin = SubResource( 9 )
+anims/collect = SubResource( 7 )
+anims/spin = SubResource( 8 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "spin"
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="coletaveis1/Area2D_2"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 9 )
+config/pitch_random = 0.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -367,13 +399,37 @@ margin/left = 133.0
 margin/top = 67.0
 margin/right = 305.0
 margin/bottom = 94.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = SubResource( 7 )
+script/script = SubResource( 11 )
+
+[node name="cenario" type="Node" parent="."]
+
+script/script = ExtResource( 10 )
+
+[node name="cenario" type="Area2D" parent="cenario"]
+
+input/pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 10 )
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 12 )
+config/pitch_random = 0.0
 
 [connection signal="body_enter" from="coletaveis1/Area2D_2" to="coletaveis1/Area2D_2" method="_on_Area2D_2_body_enter"]
 

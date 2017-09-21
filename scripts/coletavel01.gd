@@ -14,6 +14,7 @@ func _on_Area2D_body_enter( body ):
 			game.score += acaraje
 			#score_current += 1
 			get_node("shape").queue_free()
+			get_node("SamplePlayer2D").play("mordida")
 			get_node("Sprite/anima").play("collect")
 			yield(get_node("Sprite/anima"), "finished")
 			queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/coletavel01.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Fase_1.png" type="Texture" id=2]
+[ext_resource path="res://samples/mordida_session.wav" type="Sample" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -40,6 +41,15 @@ tracks/0/keys = {
 "transitions": FloatArray( 1 ),
 "update": 1,
 "values": [ Rect2( 453.537, 787.91, 107, 126 ) ]
+}
+
+[sub_resource type="SampleLibrary" id=4]
+
+samples/mordida = {
+"db": 15.6,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
 }
 
 [node name="acaraje" type="Area2D"]
@@ -82,6 +92,17 @@ transform/scale = Vector2( 0.848879, 0.798012 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 4 )
+config/pitch_random = 0.0
 
 [connection signal="body_enter" from="." to="." method="_on_Area2D_body_enter"]
 
